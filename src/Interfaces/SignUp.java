@@ -12,14 +12,12 @@ public class SignUp extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
-    connectionDB connectionV = new connectionDB("parking_son");
+   connectionDB connectionV = new connectionDB("parking_son");
     Connection connection = connectionV.connect();
+    
     
     public SignUp() {
         initComponents();
-        
-        
-        
     }
 
     /**
@@ -254,6 +252,7 @@ public class SignUp extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void exitTextXMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitTextXMouseEntered
 
         exitButton.setBackground(new Color(254, 45,45));
@@ -309,23 +308,15 @@ public class SignUp extends javax.swing.JFrame {
                 
                 try {
                     st = connection.createStatement();
-
-                    ResultSet rs = st.executeQuery(query);
-                    
-                    if(rs.next()) {
-                    JOptionPane.showMessageDialog(this, "Registro exitoso", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-                    SignIn signin = new SignIn();
-                    signin.setVisible(true);
-                    this.dispose();
-
-                    }
+               
+                    st.executeQuery(query);
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                     System.err.println("No se ha podido realizar la consulta a la base de datos.");
                 }
             }
+        
     }//GEN-LAST:event_signUpLabelMousePressed
 
     private void inputPassSignUpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPassSignUpMousePressed
@@ -412,15 +403,15 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel exitTextX;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel imageBackground;
-    private javax.swing.JPasswordField inputPassSignUp;
-    private javax.swing.JTextField inputUserSignUp;
+    public javax.swing.JPasswordField inputPassSignUp;
+    public javax.swing.JTextField inputUserSignUp;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel name;
     private javax.swing.JLabel passText;
     private javax.swing.JSeparator separator;
     private javax.swing.JSeparator separator1;
     private javax.swing.JPanel signUpButton;
-    private javax.swing.JLabel signUpLabel;
+    public javax.swing.JLabel signUpLabel;
     private javax.swing.JLabel signUpText;
     private javax.swing.JLabel textSignIn;
     private javax.swing.JLabel textWarning;
