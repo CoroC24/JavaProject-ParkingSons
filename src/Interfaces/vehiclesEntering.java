@@ -42,7 +42,12 @@ public class vehiclesEntering extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         exitButton = new javax.swing.JPanel();
         exitTextX = new javax.swing.JLabel();
-        background2 = new javax.swing.JPanel();
+        inputPlateText = new javax.swing.JLabel();
+        inputPlateVE = new app.bolivia.swing.JCTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -323,20 +328,28 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         backgroundPanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        background2.setBackground(new java.awt.Color(255, 255, 255));
+        inputPlateText.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
+        inputPlateText.setForeground(new java.awt.Color(0, 0, 0));
+        inputPlateText.setText("Ingrese la placa del vehículo");
+        inputPlateText.setToolTipText("");
+        backgroundPanel.add(inputPlateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 240, 40));
 
-        javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
-        background2.setLayout(background2Layout);
-        background2Layout.setHorizontalGroup(
-            background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
-        );
-        background2Layout.setVerticalGroup(
-            background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
+        inputPlateVE.setBackground(new java.awt.Color(255, 255, 255));
+        inputPlateVE.setBorder(null);
+        inputPlateVE.setPlaceholder("CKX765");
+        backgroundPanel.add(inputPlateVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 420, 30));
+        backgroundPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 420, 10));
 
-        backgroundPanel.add(background2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 880, 580));
+        jLabel2.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Ingrese el tipo de vehículo");
+        jLabel2.setToolTipText("");
+        backgroundPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 240, 40));
+        backgroundPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 420, 10));
+
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        backgroundPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 192, 420, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -496,7 +509,6 @@ public class vehiclesEntering extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel background2;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel exitButton;
     private javax.swing.JPanel exitButtonPanelBar;
@@ -507,6 +519,12 @@ public class vehiclesEntering extends javax.swing.JFrame {
     private javax.swing.JLabel historyButtonImg;
     private javax.swing.JPanel homeButton;
     private javax.swing.JLabel homeButtonImg;
+    private javax.swing.JLabel inputPlateText;
+    private app.bolivia.swing.JCTextField inputPlateVE;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel panelBar;
     private javax.swing.JPanel vehiclesButton;
     private javax.swing.JLabel vehiclesButtonImg;
