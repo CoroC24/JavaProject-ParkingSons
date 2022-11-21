@@ -293,7 +293,6 @@ public class SignUp extends javax.swing.JFrame {
         String user = inputUserSignUp.getText();
         String pass = String.valueOf(inputPassSignUp.getPassword());
         String query = "insert into usuarios(usuario, contraseña) VALUES ('"+ user +"', '"+ pass +"')";
-        Statement st;
               
             
             if(user.equals("Ingrese su nombre de usuario") || pass.equals("*************")) {
@@ -307,9 +306,14 @@ public class SignUp extends javax.swing.JFrame {
             } else {
                 
                 try {
-                    st = connection.createStatement();
-               
-                    st.executeQuery(query);
+                    Statement st = connection.createStatement();
+                    ResultSet rs = st.executeQuery(query);
+                    
+                    if(rs.next()) {
+                        Home home = new Home();
+                        home.setVisible(true);
+                        this.dispose();
+                    }
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
