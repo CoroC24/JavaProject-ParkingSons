@@ -42,7 +42,7 @@ public class ConfirmExit extends javax.swing.JFrame {
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         confirmText.setFont(new java.awt.Font("agave Nerd Font", 1, 18)); // NOI18N
-        confirmText.setForeground(new java.awt.Color(255, 0, 0));
+        confirmText.setForeground(new java.awt.Color(213, 13, 13));
         confirmText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmText.setText("¿Está seguro de salir?");
         background.add(confirmText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 400, 40));
