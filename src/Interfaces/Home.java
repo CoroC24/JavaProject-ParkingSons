@@ -33,6 +33,8 @@ public class Home extends javax.swing.JFrame {
         historyButtonImg = new javax.swing.JLabel();
         homeButton = new javax.swing.JPanel();
         homeButtonImg = new javax.swing.JLabel();
+        exitButtonPanelBar = new javax.swing.JPanel();
+        exitButtonTextPanelBar = new javax.swing.JLabel();
         headerPanel = new javax.swing.JPanel();
         exitButton = new javax.swing.JPanel();
         exitTextX = new javax.swing.JLabel();
@@ -186,25 +188,49 @@ public class Home extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        exitButtonPanelBar.setBackground(new java.awt.Color(46, 125, 50));
+        exitButtonPanelBar.setPreferredSize(new java.awt.Dimension(40, 40));
+
+        exitButtonTextPanelBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        exitButtonTextPanelBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exitEdited.png"))); // NOI18N
+        exitButtonTextPanelBar.setMinimumSize(new java.awt.Dimension(40, 40));
+        exitButtonTextPanelBar.setPreferredSize(new java.awt.Dimension(38, 40));
+
+        javax.swing.GroupLayout exitButtonPanelBarLayout = new javax.swing.GroupLayout(exitButtonPanelBar);
+        exitButtonPanelBar.setLayout(exitButtonPanelBarLayout);
+        exitButtonPanelBarLayout.setHorizontalGroup(
+            exitButtonPanelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitButtonPanelBarLayout.createSequentialGroup()
+                .addComponent(exitButtonTextPanelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+        exitButtonPanelBarLayout.setVerticalGroup(
+            exitButtonPanelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitButtonPanelBarLayout.createSequentialGroup()
+                .addComponent(exitButtonTextPanelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelBarLayout = new javax.swing.GroupLayout(panelBar);
         panelBar.setLayout(panelBarLayout);
         panelBarLayout.setHorizontalGroup(
             panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBarLayout.createSequentialGroup()
-                .addGroup(panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vehiclesParkingButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBarLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(vehiclesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(homeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(panelBarLayout.createSequentialGroup()
+                .addGroup(panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vehiclesParkingButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitButtonPanelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelBarLayout.setVerticalGroup(
             panelBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBarLayout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addGap(152, 152, 152)
                 .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(vehiclesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,7 +238,9 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(vehiclesParkingButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(historyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(exitButtonPanelBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         background.add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 580));
@@ -442,6 +470,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JPanel background2;
     private javax.swing.JPanel exitButton;
+    private javax.swing.JPanel exitButtonPanelBar;
+    private javax.swing.JLabel exitButtonTextPanelBar;
     private javax.swing.JLabel exitTextX;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JPanel historyButton;
