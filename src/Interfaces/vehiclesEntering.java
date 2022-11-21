@@ -194,8 +194,20 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         exitButtonTextPanelBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exitButtonTextPanelBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exitEdited.png"))); // NOI18N
+        exitButtonTextPanelBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonTextPanelBar.setMinimumSize(new java.awt.Dimension(40, 40));
         exitButtonTextPanelBar.setPreferredSize(new java.awt.Dimension(38, 40));
+        exitButtonTextPanelBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonTextPanelBarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonTextPanelBarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitButtonTextPanelBarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout exitButtonPanelBarLayout = new javax.swing.GroupLayout(exitButtonPanelBar);
         exitButtonPanelBar.setLayout(exitButtonPanelBarLayout);
@@ -430,6 +442,23 @@ public class vehiclesEntering extends javax.swing.JFrame {
         history.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_historyButtonImgMousePressed
+
+    private void exitButtonTextPanelBarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonTextPanelBarMouseEntered
+        // TODO add your handling code here:
+        exitButtonPanelBar.setBackground(new Color(0, 80, 5));
+        exitButtonTextPanelBar.setToolTipText("Salir");
+    }//GEN-LAST:event_exitButtonTextPanelBarMouseEntered
+
+    private void exitButtonTextPanelBarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonTextPanelBarMouseExited
+        // TODO add your handling code here:
+        exitButtonPanelBar.setBackground(new Color(46, 125, 50));
+    }//GEN-LAST:event_exitButtonTextPanelBarMouseExited
+
+    private void exitButtonTextPanelBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonTextPanelBarMousePressed
+        // TODO add your handling code here:
+        ConfirmExit confirmE = new ConfirmExit();
+        confirmE.setVisible(true);
+    }//GEN-LAST:event_exitButtonTextPanelBarMousePressed
 
     /**
      * @param args the command line arguments

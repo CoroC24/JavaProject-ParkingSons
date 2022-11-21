@@ -193,8 +193,20 @@ public class Home extends javax.swing.JFrame {
 
         exitButtonTextPanelBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         exitButtonTextPanelBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exitEdited.png"))); // NOI18N
+        exitButtonTextPanelBar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitButtonTextPanelBar.setMinimumSize(new java.awt.Dimension(40, 40));
         exitButtonTextPanelBar.setPreferredSize(new java.awt.Dimension(38, 40));
+        exitButtonTextPanelBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitButtonTextPanelBarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                exitButtonTextPanelBarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                exitButtonTextPanelBarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout exitButtonPanelBarLayout = new javax.swing.GroupLayout(exitButtonPanelBar);
         exitButtonPanelBar.setLayout(exitButtonPanelBarLayout);
@@ -410,25 +422,37 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonImgMousePressed
 
     private void vehiclesButtonImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vehiclesButtonImgMousePressed
-        // TODO add your handling code here:
         vehiclesEntering vehiclesE = new vehiclesEntering();
         vehiclesE.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_vehiclesButtonImgMousePressed
 
     private void vehiclesParkingButtonImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vehiclesParkingButtonImgMousePressed
-        // TODO add your handling code here:
         vehiclesInParking vehiclesP = new vehiclesInParking();
         vehiclesP.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_vehiclesParkingButtonImgMousePressed
 
     private void historyButtonImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historyButtonImgMousePressed
-        // TODO add your handling code here:
         history history = new history();
         history.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_historyButtonImgMousePressed
+
+    private void exitButtonTextPanelBarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonTextPanelBarMousePressed
+        
+        ConfirmExit confirmE = new ConfirmExit();
+        confirmE.setVisible(true);
+    }//GEN-LAST:event_exitButtonTextPanelBarMousePressed
+
+    private void exitButtonTextPanelBarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonTextPanelBarMouseEntered
+        exitButtonPanelBar.setBackground(new Color(0, 80, 5));
+        exitButtonTextPanelBar.setToolTipText("Salir");
+    }//GEN-LAST:event_exitButtonTextPanelBarMouseEntered
+
+    private void exitButtonTextPanelBarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitButtonTextPanelBarMouseExited
+        exitButtonPanelBar.setBackground(new Color(46, 125, 50));
+    }//GEN-LAST:event_exitButtonTextPanelBarMouseExited
 
     /**
      * @param args the command line arguments
