@@ -311,7 +311,7 @@ public class SignUp extends javax.swing.JFrame {
                     st = connection.createStatement();
 
                     ResultSet rs = st.executeQuery(query);
-
+                    
                     if(rs.next()) {
                     JOptionPane.showMessageDialog(this, "Registro exitoso", "Success", JOptionPane.INFORMATION_MESSAGE);
 
@@ -320,6 +320,7 @@ public class SignUp extends javax.swing.JFrame {
                     this.dispose();
 
                     }
+                    
                 } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                     System.err.println("No se ha podido realizar la consulta a la base de datos.");

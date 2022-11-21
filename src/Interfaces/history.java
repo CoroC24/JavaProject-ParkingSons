@@ -394,7 +394,7 @@ public class history extends javax.swing.JFrame {
         vehiclesP.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_vehiclesParkingButtonImgMousePressed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -421,7 +421,6 @@ public class history extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(history.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -429,6 +428,7 @@ public class history extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background2;
