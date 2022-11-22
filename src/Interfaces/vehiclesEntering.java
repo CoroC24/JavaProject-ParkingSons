@@ -5,6 +5,10 @@
 package Interfaces;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.*;
+import javaproject.parking.connectionDB;
 
 /**
  *
@@ -14,8 +18,13 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
+    connectionDB connection;
+    
     public vehiclesEntering() {
         initComponents();
+        
+        connection = new connectionDB("parking_son");
+        connection.connect();
     }
 
     /**
@@ -44,16 +53,24 @@ public class vehiclesEntering extends javax.swing.JFrame {
         exitTextX = new javax.swing.JLabel();
         inputPlateText = new javax.swing.JLabel();
         inputPlateVE = new app.bolivia.swing.JCTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        separator1 = new javax.swing.JSeparator();
+        inputVehicleText = new javax.swing.JLabel();
+        vehicleSelector = new rojerusan.RSComboMetro();
+        separator2 = new javax.swing.JSeparator();
+        inputPlateText1 = new javax.swing.JLabel();
+        inputDateTimeVE = new app.bolivia.swing.JCTextField();
+        separator3 = new javax.swing.JSeparator();
+        textWarning = new javax.swing.JLabel();
+        addButton = new javax.swing.JPanel();
+        addLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
+        backgroundPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backgroundPanel.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         backgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBar.setBackground(new java.awt.Color(46, 125, 50));
@@ -332,24 +349,96 @@ public class vehiclesEntering extends javax.swing.JFrame {
         inputPlateText.setForeground(new java.awt.Color(0, 0, 0));
         inputPlateText.setText("Ingrese la placa del vehículo");
         inputPlateText.setToolTipText("");
-        backgroundPanel.add(inputPlateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 240, 40));
+        backgroundPanel.add(inputPlateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 240, 40));
 
         inputPlateVE.setBackground(new java.awt.Color(255, 255, 255));
         inputPlateVE.setBorder(null);
+        inputPlateVE.setForeground(new java.awt.Color(0, 0, 0));
+        inputPlateVE.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         inputPlateVE.setPlaceholder("CKX765");
-        backgroundPanel.add(inputPlateVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 420, 30));
-        backgroundPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 420, 10));
+        backgroundPanel.add(inputPlateVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 420, 30));
 
-        jLabel2.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Ingrese el tipo de vehículo");
-        jLabel2.setToolTipText("");
-        backgroundPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 240, 40));
-        backgroundPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 420, 10));
+        separator1.setBackground(new java.awt.Color(51, 51, 51));
+        separator1.setForeground(new java.awt.Color(51, 51, 51));
+        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 420, 10));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        backgroundPanel.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 192, 420, 30));
+        inputVehicleText.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
+        inputVehicleText.setForeground(new java.awt.Color(0, 0, 0));
+        inputVehicleText.setText("Ingrese el tipo de vehículo");
+        inputVehicleText.setToolTipText("");
+        backgroundPanel.add(inputVehicleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 240, 40));
+
+        vehicleSelector.setBackground(new java.awt.Color(204, 204, 204));
+        vehicleSelector.setBorder(null);
+        vehicleSelector.setForeground(new java.awt.Color(0, 0, 0));
+        vehicleSelector.setMaximumRowCount(4);
+        vehicleSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Moto", "Carro Particular", "Bus" }));
+        vehicleSelector.setColorArrow(new java.awt.Color(51, 51, 51));
+        vehicleSelector.setColorBorde(new java.awt.Color(255, 255, 255));
+        vehicleSelector.setColorFondo(new java.awt.Color(255, 255, 255));
+        vehicleSelector.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
+        backgroundPanel.add(vehicleSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 420, -1));
+
+        separator2.setBackground(new java.awt.Color(51, 51, 51));
+        separator2.setForeground(new java.awt.Color(51, 51, 51));
+        backgroundPanel.add(separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 420, 10));
+
+        inputPlateText1.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
+        inputPlateText1.setForeground(new java.awt.Color(0, 0, 0));
+        inputPlateText1.setText("Ingrese la hora y fecha de entrada");
+        inputPlateText1.setToolTipText("");
+        backgroundPanel.add(inputPlateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 290, 40));
+
+        inputDateTimeVE.setBackground(new java.awt.Color(255, 255, 255));
+        inputDateTimeVE.setBorder(null);
+        inputDateTimeVE.setForeground(new java.awt.Color(0, 0, 0));
+        inputDateTimeVE.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
+        inputDateTimeVE.setPlaceholder("15:00");
+        backgroundPanel.add(inputDateTimeVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 420, 30));
+
+        separator3.setBackground(new java.awt.Color(51, 51, 51));
+        separator3.setForeground(new java.awt.Color(51, 51, 51));
+        backgroundPanel.add(separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 420, 10));
+
+        textWarning.setBackground(new java.awt.Color(255, 255, 255));
+        textWarning.setFont(new java.awt.Font("agave Nerd Font", 0, 18)); // NOI18N
+        textWarning.setForeground(new java.awt.Color(255, 0, 0));
+        textWarning.setToolTipText("");
+        backgroundPanel.add(textWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 560, 30));
+
+        addButton.setBackground(new java.awt.Color(46, 125, 50));
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        addLabel.setBackground(new java.awt.Color(46, 125, 50));
+        addLabel.setFont(new java.awt.Font("agave Nerd Font", 1, 14)); // NOI18N
+        addLabel.setForeground(new java.awt.Color(255, 255, 255));
+        addLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addLabel.setText("REGISTRAR");
+        addLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addLabelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                addLabelMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout addButtonLayout = new javax.swing.GroupLayout(addButton);
+        addButton.setLayout(addButtonLayout);
+        addButtonLayout.setHorizontalGroup(
+            addButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        addButtonLayout.setVerticalGroup(
+            addButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(addLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+
+        backgroundPanel.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 232, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -473,6 +562,53 @@ public class vehiclesEntering extends javax.swing.JFrame {
         confirmE.setVisible(true);
     }//GEN-LAST:event_exitButtonTextPanelBarMousePressed
 
+    private void addLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addLabelMouseEntered
+        addButton.setBackground(new Color(0, 80, 5));
+    }//GEN-LAST:event_addLabelMouseEntered
+
+    private void addLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addLabelMouseExited
+        addButton.setBackground(new Color(46, 125, 50));
+    }//GEN-LAST:event_addLabelMouseExited
+
+    private void addLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addLabelMousePressed
+        String plate = inputPlateVE.getText();
+        String dateT = inputDateTimeVE.getText();
+        String vehicle = vehicleSelector.getSelectedItem().toString();
+        String horaSTemp = "00:00";
+        
+        String query = "insert into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"', '"+ 0 +"')";
+
+        if(plate.isEmpty() || dateT.isEmpty()){
+
+            textWarning.setText("Por favor ingrese un nombre de usuario y contraseña.");
+
+            separator1.setForeground(Color.red);
+            separator2.setForeground(Color.red);
+            separator3.setForeground(Color.red);
+            separator1.setBackground(Color.red);
+            separator2.setBackground(Color.red);
+            separator3.setBackground(Color.red);
+
+        } else {
+
+            try {
+                Statement st = (Statement) connection.connect().createStatement();
+                st.executeUpdate(query);
+                
+                inputPlateVE.setText("");
+                inputDateTimeVE.setText("");
+                vehicleSelector.setSelectedItem(0);
+                textWarning.setText("Vehículo ingresado correctamente");
+                textWarning.setForeground(new Color(46, 125, 50));
+
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+                System.err.println("No se ha podido realizar la consulta a la base de datos.");
+            }
+        }
+
+    }//GEN-LAST:event_addLabelMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -509,6 +645,8 @@ public class vehiclesEntering extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addButton;
+    public javax.swing.JLabel addLabel;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel exitButton;
     private javax.swing.JPanel exitButtonPanelBar;
@@ -519,13 +657,17 @@ public class vehiclesEntering extends javax.swing.JFrame {
     private javax.swing.JLabel historyButtonImg;
     private javax.swing.JPanel homeButton;
     private javax.swing.JLabel homeButtonImg;
+    private app.bolivia.swing.JCTextField inputDateTimeVE;
     private javax.swing.JLabel inputPlateText;
+    private javax.swing.JLabel inputPlateText1;
     private app.bolivia.swing.JCTextField inputPlateVE;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel inputVehicleText;
     private javax.swing.JPanel panelBar;
+    private javax.swing.JSeparator separator1;
+    private javax.swing.JSeparator separator2;
+    private javax.swing.JSeparator separator3;
+    private javax.swing.JLabel textWarning;
+    private rojerusan.RSComboMetro vehicleSelector;
     private javax.swing.JPanel vehiclesButton;
     private javax.swing.JLabel vehiclesButtonImg;
     private javax.swing.JPanel vehiclesParkingButton;

@@ -12,12 +12,14 @@ public class SignUp extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
-   connectionDB connectionV = new connectionDB("parking_son");
-    Connection connection = connectionV.connect();
+    connectionDB connection;
     
     
     public SignUp() {
         initComponents();
+        
+        connection = new connectionDB("parking_son");
+        connection.connect();
     }
 
     /**
@@ -38,12 +40,12 @@ public class SignUp extends javax.swing.JFrame {
         exitTextX = new javax.swing.JLabel();
         signUpButton = new javax.swing.JPanel();
         signUpLabel = new javax.swing.JLabel();
-        inputPassSignUp = new javax.swing.JPasswordField();
         separator1 = new javax.swing.JSeparator();
+        inputPassSignUp = new rojerusan.RSPasswordTextPlaceHolder();
         passText = new javax.swing.JLabel();
         separator = new javax.swing.JSeparator();
+        inputUserSignUp = new app.bolivia.swing.JCTextField();
         userText = new javax.swing.JLabel();
-        inputUserSignUp = new javax.swing.JTextField();
         signUpText = new javax.swing.JLabel();
         textSignIn = new javax.swing.JLabel();
         textWarning = new javax.swing.JLabel();
@@ -167,20 +169,20 @@ public class SignUp extends javax.swing.JFrame {
 
         backgroundPanel.add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 232, -1));
 
-        inputPassSignUp.setBackground(new java.awt.Color(255, 255, 255));
-        inputPassSignUp.setForeground(new java.awt.Color(204, 204, 204));
-        inputPassSignUp.setText("*************");
-        inputPassSignUp.setBorder(null);
-        inputPassSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                inputPassSignUpMousePressed(evt);
-            }
-        });
-        backgroundPanel.add(inputPassSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 440, 40));
-
         separator1.setBackground(new java.awt.Color(0, 0, 0));
         separator1.setForeground(new java.awt.Color(0, 0, 0));
-        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 440, -1));
+        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, 440, 10));
+
+        inputPassSignUp.setBackground(new java.awt.Color(255, 255, 255));
+        inputPassSignUp.setBorder(null);
+        inputPassSignUp.setForeground(new java.awt.Color(0, 0, 0));
+        inputPassSignUp.setToolTipText("");
+        inputPassSignUp.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
+        inputPassSignUp.setMinimumSize(new java.awt.Dimension(197, 32));
+        inputPassSignUp.setPhColor(new java.awt.Color(102, 102, 102));
+        inputPassSignUp.setPlaceholder("**********");
+        inputPassSignUp.setPreferredSize(new java.awt.Dimension(197, 32));
+        backgroundPanel.add(inputPassSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 440, 40));
 
         passText.setFont(new java.awt.Font("agave Nerd Font", 0, 14)); // NOI18N
         passText.setForeground(new java.awt.Color(0, 0, 0));
@@ -190,25 +192,23 @@ public class SignUp extends javax.swing.JFrame {
 
         separator.setBackground(new java.awt.Color(0, 0, 0));
         separator.setForeground(new java.awt.Color(0, 0, 0));
-        backgroundPanel.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 440, -1));
+        backgroundPanel.add(separator, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 440, 10));
+
+        inputUserSignUp.setBackground(new java.awt.Color(255, 255, 255));
+        inputUserSignUp.setBorder(null);
+        inputUserSignUp.setForeground(new java.awt.Color(0, 0, 0));
+        inputUserSignUp.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
+        inputUserSignUp.setMinimumSize(new java.awt.Dimension(197, 32));
+        inputUserSignUp.setPhColor(new java.awt.Color(102, 102, 102));
+        inputUserSignUp.setPlaceholder("Ingrese su nombre de usuario");
+        inputUserSignUp.setPreferredSize(new java.awt.Dimension(197, 32));
+        backgroundPanel.add(inputUserSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 172, 440, 40));
 
         userText.setFont(new java.awt.Font("agave Nerd Font", 0, 14)); // NOI18N
         userText.setForeground(new java.awt.Color(0, 0, 0));
         userText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         userText.setText("USUARIO");
         backgroundPanel.add(userText, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
-
-        inputUserSignUp.setBackground(new java.awt.Color(255, 255, 255));
-        inputUserSignUp.setFont(new java.awt.Font("mononoki NF", 0, 12)); // NOI18N
-        inputUserSignUp.setForeground(new java.awt.Color(204, 204, 204));
-        inputUserSignUp.setText("Ingrese su nombre de usuario");
-        inputUserSignUp.setBorder(null);
-        inputUserSignUp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                inputUserSignUpMousePressed(evt);
-            }
-        });
-        backgroundPanel.add(inputUserSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 440, 40));
 
         signUpText.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         signUpText.setForeground(new java.awt.Color(0, 0, 0));
@@ -231,7 +231,7 @@ public class SignUp extends javax.swing.JFrame {
                 textSignInMouseExited(evt);
             }
         });
-        backgroundPanel.add(textSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, -1, -1));
+        backgroundPanel.add(textSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, -1, -1));
 
         textWarning.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         textWarning.setForeground(new java.awt.Color(255, 51, 51));
@@ -295,7 +295,8 @@ public class SignUp extends javax.swing.JFrame {
         String query = "insert into usuarios(usuario, contraseña) VALUES ('"+ user +"', '"+ pass +"')";
               
             
-            if(user.equals("Ingrese su nombre de usuario") || pass.equals("*************")) {
+            if(user.isEmpty() || pass.isEmpty()){
+                
                 textWarning.setText("Por favor ingrese un nombre de usuario y contraseña.");
 
                 separator.setForeground(Color.red);
@@ -306,14 +307,15 @@ public class SignUp extends javax.swing.JFrame {
             } else {
                 
                 try {
-                    Statement st = connection.createStatement();
-                    ResultSet rs = st.executeQuery(query);
                     
-                    if(rs.next()) {
+                    Statement st = connection.connect().createStatement();
+                    st.executeUpdate(query);
+                    
+                    /*if(rs.next()) {
                         Home home = new Home();
                         home.setVisible(true);
                         this.dispose();
-                    }
+                    }*/
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
@@ -322,33 +324,6 @@ public class SignUp extends javax.swing.JFrame {
             }
         
     }//GEN-LAST:event_signUpLabelMousePressed
-
-    private void inputPassSignUpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPassSignUpMousePressed
-
-        if(String.valueOf(inputPassSignUp.getPassword()).equals("*************")) {
-            inputPassSignUp.setText("");
-            inputPassSignUp.setForeground(Color.black);
-        }
-
-        if(inputUserSignUp.getText().isEmpty()) {
-            inputUserSignUp.setText("Ingrese su nombre de usuario");
-            inputUserSignUp.setForeground(new Color(204,204,204));
-        }
-
-    }//GEN-LAST:event_inputPassSignUpMousePressed
-
-    private void inputUserSignUpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputUserSignUpMousePressed
-        if(inputUserSignUp.getText().equals("Ingrese su nombre de usuario")) {
-            inputUserSignUp.setText("");
-            inputUserSignUp.setForeground(Color.black);
-        }
-
-        if(String.valueOf(inputPassSignUp.getPassword()).isEmpty()) {
-            inputPassSignUp.setText("*************");
-            inputPassSignUp.setForeground(new Color(204,204,204));
-        }
-
-    }//GEN-LAST:event_inputUserSignUpMousePressed
 
     private void textSignInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSignInMouseEntered
         textSignIn.setForeground(new Color(100,100,100));
@@ -407,8 +382,8 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel exitTextX;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel imageBackground;
-    public javax.swing.JPasswordField inputPassSignUp;
-    public javax.swing.JTextField inputUserSignUp;
+    private rojerusan.RSPasswordTextPlaceHolder inputPassSignUp;
+    private app.bolivia.swing.JCTextField inputUserSignUp;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel name;
     private javax.swing.JLabel passText;
