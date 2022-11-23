@@ -599,6 +599,13 @@ public class vehiclesEntering extends javax.swing.JFrame {
                 vehicleSelector.setSelectedItem(0);
                 textWarning.setText("Vehículo ingresado correctamente");
                 textWarning.setForeground(new Color(46, 125, 50));
+                
+                separator1.setForeground(new Color(46, 125, 50));
+                separator2.setForeground(new Color(46, 125, 50));
+                separator3.setForeground(new Color(46, 125, 50));
+                separator1.setBackground(new Color(46, 125, 50));
+                separator2.setBackground(new Color(46, 125, 50));
+                separator3.setBackground(new Color(46, 125, 50));
 
             } catch (SQLException ex) {
                 Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
