@@ -328,6 +328,8 @@ public class SignIn extends javax.swing.JFrame {
         } catch(SQLException e) {
             System.err.println("No se ha podido realizar la consulta a la base de datos.");
         }
+        
+        connectionV.disconnect();
     }//GEN-LAST:event_signInLabelMousePressed
 
     private void textSignUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSignUpMouseEntered

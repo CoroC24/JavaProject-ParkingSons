@@ -19,7 +19,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
     int xMouse, yMouse;
     
     connectionDB connection;
-    
+
     public vehiclesEntering() {
         initComponents();
         
@@ -369,11 +369,12 @@ public class vehiclesEntering extends javax.swing.JFrame {
         backgroundPanel.add(inputVehicleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 240, 40));
 
         vehicleSelector.setBackground(new java.awt.Color(204, 204, 204));
+        vehicleSelector.setBorder(null);
         vehicleSelector.setForeground(new java.awt.Color(0, 0, 0));
         vehicleSelector.setMaximumRowCount(4);
         vehicleSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Moto", "Carro Particular", "Bus" }));
         vehicleSelector.setColorArrow(new java.awt.Color(51, 51, 51));
-        vehicleSelector.setColorBorde(new java.awt.Color(255, 255, 255));
+        vehicleSelector.setColorBorde(new java.awt.Color(153, 153, 153));
         vehicleSelector.setColorFondo(new java.awt.Color(255, 255, 255));
         vehicleSelector.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         backgroundPanel.add(vehicleSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, -1));
@@ -600,7 +601,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
                 
                 inputPlateVE.setText("");
                 inputDateTimeVE.setText("");
-                vehicleSelector.setSelectedItem(0);
+                vehicleSelector.setSelectedItem("Seleccione una opción");
                 textWarning.setText("Vehículo ingresado correctamente");
                 textWarning.setForeground(new Color(46, 125, 50));
                 
@@ -615,10 +616,12 @@ public class vehiclesEntering extends javax.swing.JFrame {
                 Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                 System.err.println("No se ha podido realizar la consulta a la base de datos.");
             }
+            
+            connection.disconnect();
         }
 
     }//GEN-LAST:event_addLabelMousePressed
-
+       
     /**
      * @param args the command line arguments
      */
@@ -667,17 +670,17 @@ public class vehiclesEntering extends javax.swing.JFrame {
     private javax.swing.JLabel historyButtonImg;
     private javax.swing.JPanel homeButton;
     private javax.swing.JLabel homeButtonImg;
-    private app.bolivia.swing.JCTextField inputDateTimeVE;
+    public app.bolivia.swing.JCTextField inputDateTimeVE;
     private javax.swing.JLabel inputPlateText;
     private javax.swing.JLabel inputPlateText1;
-    private app.bolivia.swing.JCTextField inputPlateVE;
+    public app.bolivia.swing.JCTextField inputPlateVE;
     private javax.swing.JLabel inputVehicleText;
     private javax.swing.JPanel panelBar;
     private javax.swing.JSeparator separator1;
     private javax.swing.JSeparator separator2;
     private javax.swing.JSeparator separator3;
     private javax.swing.JLabel textWarning;
-    private rojerusan.RSComboMetro vehicleSelector;
+    public rojerusan.RSComboMetro vehicleSelector;
     private javax.swing.JPanel vehiclesButton;
     private javax.swing.JLabel vehiclesButtonImg;
     private javax.swing.JPanel vehiclesParkingButton;

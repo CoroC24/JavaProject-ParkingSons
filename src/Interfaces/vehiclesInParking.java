@@ -1,21 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfaces;
 
-import java.awt.Color;
+import java.awt.*;
+import java.sql.*;
+import javaproject.parking.connectionDB;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Usuario
- */
 public class vehiclesInParking extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
+    connectionDB connectionV;
+    
+    DefaultTableModel model = new DefaultTableModel();
+    
     public vehiclesInParking() {
         initComponents();
+        
+        jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(46, 125, 50));
+        jTable1.getTableHeader().setForeground(Color.white);
+        jTable1.setRowHeight(25);
+        
+        
+        connectionV = new connectionDB("parking_son");
+        connectionV.connect();
+        
+        try {
+            
+            String query = "SELECT * from vehiculosentrando";
+
+            PreparedStatement pst = connectionV.connect().prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            
+            
+            if(rs.next()) {
+                
+            }
+            
+
+        } catch(SQLException e) {
+            System.err.println("No se ha podido realizar la consulta a la base de datos.");
+        }
+        
     }
 
     /**
@@ -27,6 +54,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rSEstiloTablaHeader1 = new rojeru_san.complementos.RSEstiloTablaHeader();
         backgroundPanel = new javax.swing.JPanel();
         panelBar = new javax.swing.JPanel();
         vehiclesButton = new javax.swing.JPanel();
@@ -43,6 +71,14 @@ public class vehiclesInParking extends javax.swing.JFrame {
         exitButton = new javax.swing.JPanel();
         exitTextX = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        rSEstiloTablaHeader1.setAltoHead(30);
+        rSEstiloTablaHeader1.setColorBackgound(new java.awt.Color(255, 255, 255));
+        rSEstiloTablaHeader1.setColorBorde(new java.awt.Color(153, 153, 153));
+        rSEstiloTablaHeader1.setColorForeground(new java.awt.Color(51, 51, 51));
+        rSEstiloTablaHeader1.setFuenteHead(new java.awt.Font("agave Nerd Font", 1, 15)); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -324,7 +360,42 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Vehículos en estacionamiento actualmente");
         jLabel1.setToolTipText("");
-        backgroundPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 550, 40));
+        backgroundPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 550, 40));
+
+        jScrollPane1.setFocusable(false);
+
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
+        jTable1.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(0, 0, 0));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Placa", "Tipo de Vehículo", "Hora de Entrada"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setFocusable(false);
+        jTable1.setRowHeight(25);
+        jTable1.setSelectionBackground(new java.awt.Color(46, 125, 50));
+        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setShowGrid(false);
+        jTable1.setShowHorizontalLines(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+
+        backgroundPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 800, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -454,7 +525,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -490,7 +561,10 @@ public class vehiclesInParking extends javax.swing.JFrame {
     private javax.swing.JPanel homeButton;
     private javax.swing.JLabel homeButtonImg;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelBar;
+    private rojeru_san.complementos.RSEstiloTablaHeader rSEstiloTablaHeader1;
     private javax.swing.JPanel vehiclesButton;
     private javax.swing.JLabel vehiclesButtonImg;
     private javax.swing.JPanel vehiclesParkingButton;

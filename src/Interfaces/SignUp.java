@@ -293,6 +293,8 @@ public class SignUp extends javax.swing.JFrame {
         String user = inputUserSignUp.getText();
         String pass = String.valueOf(inputPassSignUp.getPassword());
         String query = "insert into usuarios(usuario, contraseña) VALUES ('"+ user +"', '"+ pass +"')";
+        String query2 = "select 1 from usuarios where usuario = ?;";
+
               
             
             if(user.isEmpty() || pass.isEmpty()){
@@ -305,27 +307,38 @@ public class SignUp extends javax.swing.JFrame {
                 separator.setBackground(Color.red);
                 separator1.setBackground(Color.red);
                 
+            } else if(connection.ifExists(query2, user)){
+                
+                textWarning.setText("Este usuario ya se encuentra registrado");
+                textWarning.setForeground(Color.red);
+
+                separator.setForeground(Color.red);
+                separator1.setForeground(Color.red);
+                separator.setBackground(Color.red);
+                separator1.setBackground(Color.red);
+                        
+                inputUserSignUp.setText("");
+                inputPassSignUp.setText("");
+                
             } else {
                 
                 try {
-                    
                     Statement st = connection.connect().createStatement();
                     st.executeUpdate(query);
-                    
+
                     textWarning.setText("Usuario registrado correctamente");
                     textWarning.setForeground(new Color(46, 125, 50));
-                    
+
                     separator.setForeground(new Color(46, 125, 50));
                     separator1.setForeground(new Color(46, 125, 50));
                     separator.setBackground(new Color(46, 125, 50));
                     separator1.setBackground(new Color(46, 125, 50));
-                    
+
                     if(textWarning.getText().equals("Usuario registrado correctamente")) {
                         ConfirmSignUp csignup = new ConfirmSignUp();
                         csignup.setVisible(true);
-                        
+
                     }
-                    
                 } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
                     System.err.println("No se ha podido realizar la consulta a la base de datos.");

@@ -44,4 +44,20 @@ public class connectionDB {
             Logger.getLogger(connectionDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public boolean ifExists(String qSQL, String username) {
+        try {
+            
+            PreparedStatement pst = connection.prepareStatement(qSQL);
+            pst.setString(1, username);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
+            
+        } catch(SQLException ex) {
+            Logger.getLogger(connectionDB.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("No se ha podido realizar la consulta a la base de datos.");
+        }
+        
+        return false;
+    }
 }
