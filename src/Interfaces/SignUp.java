@@ -344,7 +344,6 @@ public class SignUp extends javax.swing.JFrame {
                     System.err.println("No se ha podido realizar la consulta a la base de datos.");
                 }
             }
-        
     }//GEN-LAST:event_signUpLabelMousePressed
 
     private void textSignInMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textSignInMouseEntered
