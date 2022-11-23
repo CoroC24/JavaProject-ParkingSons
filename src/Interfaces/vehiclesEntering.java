@@ -576,6 +576,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         String horaSTemp = "00:00";
         
         String query = "insert into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"', '"+ 0 +"')";
+        String query2 = "insert into vehiculosentrando(placa, tipoVehiculo, horaEntrada) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "')";
 
         if(plate.isEmpty() || dateT.isEmpty()){
 
@@ -591,8 +592,11 @@ public class vehiclesEntering extends javax.swing.JFrame {
         } else {
 
             try {
+                
                 Statement st = (Statement) connection.connect().createStatement();
                 st.executeUpdate(query);
+                Statement st2 = (Statement) connection.connect().createStatement();
+                st2.executeUpdate(query2);
                 
                 inputPlateVE.setText("");
                 inputDateTimeVE.setText("");

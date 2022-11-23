@@ -42,7 +42,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         exitButton = new javax.swing.JPanel();
         exitTextX = new javax.swing.JLabel();
-        background2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -320,20 +320,11 @@ public class vehiclesInParking extends javax.swing.JFrame {
 
         backgroundPanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        background2.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
-        background2.setLayout(background2Layout);
-        background2Layout.setHorizontalGroup(
-            background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 880, Short.MAX_VALUE)
-        );
-        background2Layout.setVerticalGroup(
-            background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
-
-        backgroundPanel.add(background2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 880, 580));
+        jLabel1.setFont(new java.awt.Font("agave Nerd Font", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setText("Vehículos en estacionamiento actualmente");
+        jLabel1.setToolTipText("");
+        backgroundPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 550, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -488,7 +479,6 @@ public class vehiclesInParking extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel background2;
     private javax.swing.JPanel backgroundPanel;
     private javax.swing.JPanel exitButton;
     private javax.swing.JPanel exitButtonPanelBar;
@@ -499,6 +489,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
     private javax.swing.JLabel historyButtonImg;
     private javax.swing.JPanel homeButton;
     private javax.swing.JLabel homeButtonImg;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelBar;
     private javax.swing.JPanel vehiclesButton;
     private javax.swing.JLabel vehiclesButtonImg;
