@@ -38,7 +38,7 @@ public class ConfirmSignUp extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(418, 161));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(240, 240, 240));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         confirmText.setFont(new java.awt.Font("agave Nerd Font", 1, 16)); // NOI18N
