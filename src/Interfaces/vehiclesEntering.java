@@ -360,16 +360,15 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         separator1.setBackground(new java.awt.Color(51, 51, 51));
         separator1.setForeground(new java.awt.Color(51, 51, 51));
-        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 420, 10));
+        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 420, 10));
 
         inputVehicleText.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
         inputVehicleText.setForeground(new java.awt.Color(0, 0, 0));
         inputVehicleText.setText("Ingrese el tipo de vehículo");
         inputVehicleText.setToolTipText("");
-        backgroundPanel.add(inputVehicleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 240, 40));
+        backgroundPanel.add(inputVehicleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 240, 40));
 
         vehicleSelector.setBackground(new java.awt.Color(204, 204, 204));
-        vehicleSelector.setBorder(null);
         vehicleSelector.setForeground(new java.awt.Color(0, 0, 0));
         vehicleSelector.setMaximumRowCount(4);
         vehicleSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Moto", "Carro Particular", "Bus" }));
@@ -377,7 +376,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         vehicleSelector.setColorBorde(new java.awt.Color(255, 255, 255));
         vehicleSelector.setColorFondo(new java.awt.Color(255, 255, 255));
         vehicleSelector.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
-        backgroundPanel.add(vehicleSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 420, -1));
+        backgroundPanel.add(vehicleSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, -1));
 
         separator2.setBackground(new java.awt.Color(51, 51, 51));
         separator2.setForeground(new java.awt.Color(51, 51, 51));
@@ -387,18 +386,18 @@ public class vehiclesEntering extends javax.swing.JFrame {
         inputPlateText1.setForeground(new java.awt.Color(0, 0, 0));
         inputPlateText1.setText("Ingrese la hora y fecha de entrada");
         inputPlateText1.setToolTipText("");
-        backgroundPanel.add(inputPlateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 290, 40));
+        backgroundPanel.add(inputPlateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 290, 40));
 
         inputDateTimeVE.setBackground(new java.awt.Color(255, 255, 255));
         inputDateTimeVE.setBorder(null);
         inputDateTimeVE.setForeground(new java.awt.Color(0, 0, 0));
         inputDateTimeVE.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         inputDateTimeVE.setPlaceholder("15:00");
-        backgroundPanel.add(inputDateTimeVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 420, 30));
+        backgroundPanel.add(inputDateTimeVE, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 420, 30));
 
         separator3.setBackground(new java.awt.Color(51, 51, 51));
         separator3.setForeground(new java.awt.Color(51, 51, 51));
-        backgroundPanel.add(separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 420, 10));
+        backgroundPanel.add(separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 420, 10));
 
         textWarning.setBackground(new java.awt.Color(255, 255, 255));
         textWarning.setFont(new java.awt.Font("agave Nerd Font", 0, 18)); // NOI18N

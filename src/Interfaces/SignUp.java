@@ -298,6 +298,7 @@ public class SignUp extends javax.swing.JFrame {
             if(user.isEmpty() || pass.isEmpty()){
                 
                 textWarning.setText("Por favor ingrese un nombre de usuario y contraseña.");
+                textWarning.setForeground(Color.red);
 
                 separator.setForeground(Color.red);
                 separator1.setForeground(Color.red);
@@ -311,11 +312,19 @@ public class SignUp extends javax.swing.JFrame {
                     Statement st = connection.connect().createStatement();
                     st.executeUpdate(query);
                     
-                    /*if(rs.next()) {
-                        Home home = new Home();
-                        home.setVisible(true);
-                        this.dispose();
-                    }*/
+                    textWarning.setText("Usuario registrado correctamente");
+                    textWarning.setForeground(new Color(46, 125, 50));
+                    
+                    separator.setForeground(new Color(46, 125, 50));
+                    separator1.setForeground(new Color(46, 125, 50));
+                    separator.setBackground(new Color(46, 125, 50));
+                    separator1.setBackground(new Color(46, 125, 50));
+                    
+                    if(textWarning.getText().equals("Usuario registrado correctamente")) {
+                        ConfirmSignUp csignup = new ConfirmSignUp();
+                        csignup.setVisible(true);
+                        
+                    }
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
