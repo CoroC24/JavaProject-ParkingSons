@@ -487,7 +487,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="80" y="80" width="800" height="-1"/>
+              <AbsoluteConstraints x="70" y="90" width="820" height="-1"/>
             </Constraint>
           </Constraints>
 
@@ -531,6 +531,9 @@
                   </TableColumnModel>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[375, 0]"/>
+                </Property>
                 <Property name="rowHeight" type="int" value="25"/>
                 <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="7d" red="2e" type="rgb"/>

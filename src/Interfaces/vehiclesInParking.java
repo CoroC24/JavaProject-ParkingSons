@@ -367,6 +367,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
             }
         });
         jTable1.setFocusable(false);
+        jTable1.setPreferredSize(new java.awt.Dimension(375, 0));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(46, 125, 50));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
@@ -375,7 +376,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        backgroundPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 800, -1));
+        backgroundPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 820, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
