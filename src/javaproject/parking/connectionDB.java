@@ -45,11 +45,11 @@ public class connectionDB {
         }
     }
     
-    public boolean ifExists(String qSQL, String username) {
+    public boolean ifExists(String qSQL, String consult) {
         try {
             
             PreparedStatement pst = connection.prepareStatement(qSQL);
-            pst.setString(1, username);
+            pst.setString(1, consult);
             ResultSet rs = pst.executeQuery();
             return rs.next();
             

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfaces;
 
 import java.awt.Color;
@@ -10,10 +6,7 @@ import java.util.logging.Logger;
 import java.sql.*;
 import javaproject.parking.connectionDB;
 
-/**
- *
- * @author Usuario
- */
+
 public class vehiclesEntering extends javax.swing.JFrame {
 
     int xMouse, yMouse;
@@ -374,7 +367,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         vehicleSelector.setMaximumRowCount(4);
         vehicleSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Moto", "Carro Particular", "Bus" }));
         vehicleSelector.setColorArrow(new java.awt.Color(51, 51, 51));
-        vehicleSelector.setColorBorde(new java.awt.Color(153, 153, 153));
+        vehicleSelector.setColorBorde(new java.awt.Color(255, 255, 255));
         vehicleSelector.setColorFondo(new java.awt.Color(255, 255, 255));
         vehicleSelector.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         backgroundPanel.add(vehicleSelector, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 420, -1));
@@ -578,47 +571,67 @@ public class vehiclesEntering extends javax.swing.JFrame {
         
         String query = "insert into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"', '"+ 0 +"')";
         String query2 = "insert into vehiculosentrando(placa, tipoVehiculo, horaEntrada) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "')";
+        String query3 = "select 1 from vehiculosentrando where placa = ?";
+        
 
-        if(plate.isEmpty() || dateT.isEmpty()){
+            if(plate.isEmpty() || dateT.isEmpty()){
 
-            textWarning.setText("Por favor ingrese un nombre de usuario y contraseña.");
+                textWarning.setText("Por favor ingrese la placa, tipo de vehículo y hora de entrada");
+                textWarning.setForeground(Color.red);
 
-            separator1.setForeground(Color.red);
-            separator2.setForeground(Color.red);
-            separator3.setForeground(Color.red);
-            separator1.setBackground(Color.red);
-            separator2.setBackground(Color.red);
-            separator3.setBackground(Color.red);
+                separator1.setForeground(Color.red);
+                separator2.setForeground(Color.red);
+                separator3.setForeground(Color.red);
+                separator1.setBackground(Color.red);
+                separator2.setBackground(Color.red);
+                separator3.setBackground(Color.red);
 
-        } else {
+            } else if(connection.ifExists(query3, plate)){
 
-            try {
-                
-                Statement st = (Statement) connection.connect().createStatement();
-                st.executeUpdate(query);
-                Statement st2 = (Statement) connection.connect().createStatement();
-                st2.executeUpdate(query2);
-                
+                textWarning.setText("Este vehículo ya se encuentra en el estacionamiento");
+                textWarning.setForeground(Color.red);
+
                 inputPlateVE.setText("");
                 inputDateTimeVE.setText("");
                 vehicleSelector.setSelectedItem("Seleccione una opción");
-                textWarning.setText("Vehículo ingresado correctamente");
-                textWarning.setForeground(new Color(46, 125, 50));
-                
-                separator1.setForeground(new Color(46, 125, 50));
-                separator2.setForeground(new Color(46, 125, 50));
-                separator3.setForeground(new Color(46, 125, 50));
-                separator1.setBackground(new Color(46, 125, 50));
-                separator2.setBackground(new Color(46, 125, 50));
-                separator3.setBackground(new Color(46, 125, 50));
 
-            } catch (SQLException ex) {
-                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
-                System.err.println("No se ha podido realizar la consulta a la base de datos.");
+                separator1.setForeground(Color.red);
+                separator2.setForeground(Color.red);
+                separator3.setForeground(Color.red);
+                separator1.setBackground(Color.red);
+                separator2.setBackground(Color.red);
+                separator3.setBackground(Color.red);
+
+            } else { 
+
+                try {
+
+                    Statement st = (Statement) connection.connect().createStatement();
+                    st.executeUpdate(query);
+                    Statement st2 = (Statement) connection.connect().createStatement();
+                    st2.executeUpdate(query2);
+                    
+
+                    inputPlateVE.setText("");
+                    inputDateTimeVE.setText("");
+                    vehicleSelector.setSelectedItem("Seleccione una opción");
+                    textWarning.setText("Vehículo ingresado correctamente");
+                    textWarning.setForeground(new Color(46, 125, 50));
+
+                    separator1.setForeground(new Color(46, 125, 50));
+                    separator2.setForeground(new Color(46, 125, 50));
+                    separator3.setForeground(new Color(46, 125, 50));
+                    separator1.setBackground(new Color(46, 125, 50));
+                    separator2.setBackground(new Color(46, 125, 50));
+                    separator3.setBackground(new Color(46, 125, 50));
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(vehiclesEntering.class.getName()).log(Level.SEVERE, null, ex);
+                    System.err.println("No se ha podido realizar la consulta a la base de datos.");
+                }
+
+                //connection.disconnect();
             }
-            
-            connection.disconnect();
-        }
 
     }//GEN-LAST:event_addLabelMousePressed
        

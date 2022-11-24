@@ -6,7 +6,6 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaproject.parking.connectionDB;
-import javax.swing.JOptionPane;
 
 public class SignUp extends javax.swing.JFrame {
 
