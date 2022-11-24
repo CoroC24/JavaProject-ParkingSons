@@ -9,9 +9,9 @@ public class vehiclesInParking extends javax.swing.JFrame {
 
     int xMouse, yMouse;
     
-    connectionDB connectionV;
+    connectionDB connection = new connectionDB("parking_son");
     
-    DefaultTableModel model = new DefaultTableModel();
+    DefaultTableModel model;
     
     public vehiclesInParking() {
         initComponents();
@@ -23,26 +23,9 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jTable1.setRowHeight(25);
         
         
-        connectionV = new connectionDB("parking_son");
-        connectionV.connect();
+        connection.connect();
         
-        try {
-            
-            String query = "SELECT * from vehiculosentrando";
-
-            PreparedStatement pst = connectionV.connect().prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
-            
-            
-            if(rs.next()) {
-                
-            }
-            
-
-        } catch(SQLException e) {
-            System.err.println("No se ha podido realizar la consulta a la base de datos.");
-        }
-        
+        consult();
     }
 
     /**
@@ -369,10 +352,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Placa", "Tipo de Vehículo", "Hora de Entrada"
@@ -514,6 +494,35 @@ public class vehiclesInParking extends javax.swing.JFrame {
         confirmE.setVisible(true);
     }//GEN-LAST:event_exitButtonTextPanelBarMousePressed
 
+    
+    public void consult() {
+        String query = "select * from vehiculosentrando";
+        
+        try {
+            
+            Statement st = connection.connect().createStatement();
+            ResultSet rs = st.executeQuery(query);
+            
+            Object[] vehInParking= new Object[3];
+            
+            model = (DefaultTableModel) jTable1.getModel();
+            
+            while(rs.next()) {
+                vehInParking [0] = rs.getString(1);
+                vehInParking [1] = rs.getString(2);
+                vehInParking [2] = rs.getString(3);
+                
+                model.addRow(vehInParking);
+            }
+            
+            jTable1.setModel(model);
+
+        } catch(SQLException e) {
+            System.err.println("No se ha podido realizar la consulta a la base de datos.");
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
