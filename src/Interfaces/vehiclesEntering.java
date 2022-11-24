@@ -342,6 +342,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         inputPlateText.setForeground(new java.awt.Color(0, 0, 0));
         inputPlateText.setText("Ingrese la placa del vehículo");
         inputPlateText.setToolTipText("");
+        inputPlateText.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backgroundPanel.add(inputPlateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 240, 40));
 
         inputPlateVE.setBackground(new java.awt.Color(255, 255, 255));
@@ -359,10 +360,10 @@ public class vehiclesEntering extends javax.swing.JFrame {
         inputVehicleText.setForeground(new java.awt.Color(0, 0, 0));
         inputVehicleText.setText("Ingrese el tipo de vehículo");
         inputVehicleText.setToolTipText("");
+        inputVehicleText.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backgroundPanel.add(inputVehicleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 240, 40));
 
         vehicleSelector.setBackground(new java.awt.Color(204, 204, 204));
-        vehicleSelector.setBorder(null);
         vehicleSelector.setForeground(new java.awt.Color(0, 0, 0));
         vehicleSelector.setMaximumRowCount(4);
         vehicleSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione una opción", "Moto", "Carro Particular", "Bus" }));
@@ -380,6 +381,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         inputPlateText1.setForeground(new java.awt.Color(0, 0, 0));
         inputPlateText1.setText("Ingrese la hora y fecha de entrada");
         inputPlateText1.setToolTipText("");
+        inputPlateText1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backgroundPanel.add(inputPlateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 290, 40));
 
         inputDateTimeVE.setBackground(new java.awt.Color(255, 255, 255));
