@@ -3,6 +3,9 @@
 package javaproject.parking;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +18,10 @@ public class connectionDB {
     String driver = "com.mysql.cj.jdbc.Driver";
 
     Connection connection;
+    
+    public static SimpleDateFormat sdfResult = new SimpleDateFormat("HH:mm:ss");
+    public static SimpleDateFormat sdfResultMinutes = new SimpleDateFormat("m");
+    
     
     public connectionDB(String bd) {
         this.bd = bd;
@@ -59,5 +66,20 @@ public class connectionDB {
         }
         
         return false;
+    }
+    
+    
+    public static Date getDifferenceBetweenDates(Date timeEnter, Date timeExit) {
+        long milliseconds = timeExit.getTime() - timeEnter.getTime();
+        int seconds = (int) (milliseconds / 1000) % 60;
+        int minutes = (int) (milliseconds / (1000 * 60)) % 60;
+        int hours = (int) (milliseconds / (1000 * 60 * 60)) % 60;
+        
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.SECOND, seconds);
+        c.set(Calendar.MINUTE, minutes);
+        c.set(Calendar.HOUR_OF_DAY, hours);
+        
+        return c.getTime();
     }
 }

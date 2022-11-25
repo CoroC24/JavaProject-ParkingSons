@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javaproject.parking.connectionDB;
 
 
@@ -580,7 +578,8 @@ public class vehiclesEntering extends javax.swing.JFrame {
         
         String query = "insert into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"', '"+ 0 +"')";
         String query2 = "insert into vehiculosentrando(placa, tipoVehiculo, horaEntrada) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "')";
-        String query3 = "select 1 from vehiculosentrando where placa = ?";
+        String query3 = "insert into diferencia_horas(placa, tipoVehiculo, horaEntrada) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "'"
+        String query4 = "select 1 from vehiculosentrando where placa = ?";
         
 
             if(plate.isEmpty() || dateT.isEmpty()){
@@ -595,7 +594,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
                 separator2.setBackground(Color.red);
                 separator3.setBackground(Color.red);
 
-            } else if(connection.ifExists(query3, plate)){
+            } else if(connection.ifExists(query4, plate)){
 
                 textWarning.setText("Este vehículo ya se encuentra en el estacionamiento");
                 textWarning.setForeground(Color.red);

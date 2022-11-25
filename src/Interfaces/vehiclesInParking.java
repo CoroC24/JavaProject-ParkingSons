@@ -22,7 +22,7 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jTable1.getTableHeader().setForeground(Color.white);
         jTable1.setRowHeight(25);
         
-        
+  
         connection.connect();
         
         consult();
@@ -352,7 +352,11 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
                 "Placa", "Tipo de Vehículo", "Hora de Entrada"
@@ -522,6 +526,9 @@ public class vehiclesInParking extends javax.swing.JFrame {
             System.err.println("No se ha podido realizar la consulta a la base de datos.");
         }
     }
+    
+    
+    
     
     
     /**
