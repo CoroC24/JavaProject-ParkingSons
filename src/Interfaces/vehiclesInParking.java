@@ -367,9 +367,9 @@ public class vehiclesInParking extends javax.swing.JFrame {
             }
         });
         jTable1.setFocusable(false);
-        jTable1.setPreferredSize(new java.awt.Dimension(375, 0));
+        jTable1.setPreferredSize(new java.awt.Dimension(450, 0));
         jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(46, 125, 50));
+        jTable1.setSelectionBackground(new java.awt.Color(46, 160, 50));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTable1.setShowGrid(false);
         jTable1.setShowHorizontalLines(true);
@@ -496,8 +496,8 @@ public class vehiclesInParking extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonTextPanelBarMousePressed
 
     
-    public void consult() {
-        String query = "select * from vehiculosentrando";
+    public final void consult() {
+        String query = "SELECT * FROM vehiculosentrando";
         
         try {
             

@@ -2,9 +2,7 @@ package Interfaces;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javaproject.parking.connectionDB;
 import javax.swing.table.DefaultTableModel;
 
@@ -337,7 +335,7 @@ public class history extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("agave Nerd Font", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Vehículos en estacionamiento actualmente");
+        jLabel1.setText("Historial de Vehículos Estacionados");
         jLabel1.setToolTipText("");
         backgroundPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 550, 40));
 
@@ -352,12 +350,20 @@ public class history extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Placa", "Tipo de Vehículo", "Hora de Entrada", "Hora de Salida", "Costo del Estacionamiento"
+                "Placa", "Tipo de Vehículo", "Hora de Entrada", "Hora de Salida", "Costo del Estacionamiento", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setFocusable(false);
         jTable1.setRowHeight(25);
-        jTable1.setSelectionBackground(new java.awt.Color(46, 125, 50));
+        jTable1.setSelectionBackground(new java.awt.Color(46, 160, 50));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTable1.setShowGrid(false);
         jTable1.setShowHorizontalLines(true);
@@ -491,18 +497,19 @@ public class history extends javax.swing.JFrame {
             Statement st = connection.connect().createStatement();
             ResultSet rs = st.executeQuery(query);
             
-            Object[] vehInParking= new Object[5];
+            Object[] vehHistory = new Object[6];
             
             model = (DefaultTableModel) jTable1.getModel();
             
             while(rs.next()) {
-                vehInParking [0] = rs.getString(1);
-                vehInParking [1] = rs.getString(2);
-                vehInParking [2] = rs.getString(3);
-                vehInParking [3] = rs.getString(4);
-                vehInParking [4] = rs.getString(5);
+                vehHistory [0] = rs.getString(1);
+                vehHistory [1] = rs.getString(2);
+                vehHistory [2] = rs.getString(3);
+                vehHistory [3] = rs.getString(4);
+                vehHistory [4] = rs.getString(5);
+                vehHistory [5] = rs.getString(6);
                 
-                model.addRow(vehInParking);
+                model.addRow(vehHistory);
             }
             
             jTable1.setModel(model);

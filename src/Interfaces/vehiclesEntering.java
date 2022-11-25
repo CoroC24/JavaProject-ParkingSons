@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javaproject.parking.connectionDB;
 
 
@@ -13,6 +15,8 @@ public class vehiclesEntering extends javax.swing.JFrame {
     
     connectionDB connection;
 
+    // String dateTime = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm").format(LocalDateTime.now());
+    
     public vehiclesEntering() {
         initComponents();
         
@@ -62,7 +66,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         setResizable(false);
 
         backgroundPanel.setBackground(new java.awt.Color(255, 255, 255));
-        backgroundPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backgroundPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backgroundPanel.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
         backgroundPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -354,7 +358,8 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         separator1.setBackground(new java.awt.Color(51, 51, 51));
         separator1.setForeground(new java.awt.Color(51, 51, 51));
-        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 420, 10));
+        separator1.setPreferredSize(new java.awt.Dimension(0, 2));
+        backgroundPanel.add(separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 420, -1));
 
         inputVehicleText.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
         inputVehicleText.setForeground(new java.awt.Color(0, 0, 0));
@@ -375,7 +380,8 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         separator2.setBackground(new java.awt.Color(51, 51, 51));
         separator2.setForeground(new java.awt.Color(51, 51, 51));
-        backgroundPanel.add(separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 420, 10));
+        separator2.setPreferredSize(new java.awt.Dimension(0, 2));
+        backgroundPanel.add(separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 420, -1));
 
         inputPlateText1.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
         inputPlateText1.setForeground(new java.awt.Color(0, 0, 0));
@@ -393,7 +399,8 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         separator3.setBackground(new java.awt.Color(51, 51, 51));
         separator3.setForeground(new java.awt.Color(51, 51, 51));
-        backgroundPanel.add(separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 420, 10));
+        separator3.setPreferredSize(new java.awt.Dimension(0, 2));
+        backgroundPanel.add(separator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 420, -1));
 
         textWarning.setBackground(new java.awt.Color(255, 255, 255));
         textWarning.setFont(new java.awt.Font("agave Nerd Font", 0, 18)); // NOI18N
@@ -409,7 +416,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         addLabel.setFont(new java.awt.Font("agave Nerd Font", 1, 14)); // NOI18N
         addLabel.setForeground(new java.awt.Color(255, 255, 255));
         addLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        addLabel.setText("REGISTRAR");
+        addLabel.setText("AGREGAR VEHÍCULO");
         addLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 addLabelMouseEntered(evt);
