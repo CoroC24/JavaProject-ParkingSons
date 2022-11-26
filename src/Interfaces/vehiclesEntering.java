@@ -383,7 +383,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
         inputPlateText1.setFont(new java.awt.Font("agave Nerd Font", 0, 16)); // NOI18N
         inputPlateText1.setForeground(new java.awt.Color(0, 0, 0));
-        inputPlateText1.setText("Ingrese la hora y fecha de entrada");
+        inputPlateText1.setText("Ingrese la hora de entrada");
         inputPlateText1.setToolTipText("");
         inputPlateText1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backgroundPanel.add(inputPlateText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 290, 40));
@@ -576,9 +576,9 @@ public class vehiclesEntering extends javax.swing.JFrame {
         String vehicle = vehicleSelector.getSelectedItem().toString();
         String horaSTemp = "00:00";
         
-        String query = "insert into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"', '"+ 0 +"')";
+        //String query = "insert into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"', '"+ 0 +"')";
         String query2 = "insert into vehiculosentrando(placa, tipoVehiculo, horaEntrada) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "')";
-        String query3 = "insert into diferencia_horas(placa, tipoVehiculo, horaEntrada) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "'"
+        String query3 = "insert into diferencia_horas(placa, tipoVehiculo, horaEntrada, horaSalida) values ('"+ plate +"', '"+ vehicle +"','" + dateT + "', '"+ horaSTemp +"')";
         String query4 = "select 1 from vehiculosentrando where placa = ?";
         
 
@@ -614,10 +614,12 @@ public class vehiclesEntering extends javax.swing.JFrame {
 
                 try {
 
-                    Statement st = (Statement) connection.connect().createStatement();
-                    st.executeUpdate(query);
+                    /*Statement st = (Statement) connection.connect().createStatement();
+                    st.executeUpdate(query);*/
                     Statement st2 = (Statement) connection.connect().createStatement();
                     st2.executeUpdate(query2);
+                    Statement st3 = (Statement) connection.connect().createStatement();
+                    st3.executeUpdate(query3);
                     
 
                     inputPlateVE.setText("");
