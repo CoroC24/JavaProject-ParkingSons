@@ -502,12 +502,12 @@ public class history extends javax.swing.JFrame {
             model = (DefaultTableModel) jTable1.getModel();
             
             while(rs.next()) {
-                vehHistory [0] = rs.getString(1);
-                vehHistory [1] = rs.getString(2);
-                vehHistory [2] = rs.getString(3);
-                vehHistory [3] = rs.getString(4);
-                vehHistory [4] = rs.getString(5);
-                vehHistory [5] = rs.getString(6);
+                vehHistory [0] = rs.getString(2);
+                vehHistory [1] = rs.getString(3);
+                vehHistory [2] = rs.getString(4);
+                vehHistory [3] = rs.getString(5);
+                vehHistory [4] = rs.getString(6);
+                vehHistory [5] = rs.getString(7);
                 
                 model.addRow(vehHistory);
             }
