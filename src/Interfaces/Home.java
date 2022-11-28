@@ -1,15 +1,11 @@
 package Interfaces;
 
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.time.*;
+import java.time.format.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaproject.parking.connectionDB;
@@ -17,9 +13,6 @@ import javaproject.parking.connectionDB;
 public class Home extends javax.swing.JFrame {
 
     int xMouse, yMouse;
-    
-    public static SimpleDateFormat sdfResult = new SimpleDateFormat("HH:mm:ss", Locale.US);
-    public static SimpleDateFormat sdfResultMinutes = new SimpleDateFormat("m", Locale.US);
     
     connectionDB connection;
 
@@ -575,7 +568,9 @@ public class Home extends javax.swing.JFrame {
         String query2 = "UPDATE diferencia_horas SET horaSalida = '"+ dateE +"' WHERE placa = '"+ plate +"'";
         String query3 = "select tipoVehiculo, horaEntrada, horaSalida from diferencia_horas where placa = '"+ plate +"'";
         String query4 = "DELETE from vehiculosentrando WHERE placa = '"+ plate +"'";
+        String query5 = "DELETE from diferencia_horas WHERE placa = '"+ plate +"'";
         
+         
         if(plate.isEmpty() || dateE.isEmpty()){
             
             textWarning.setText("Por favor ingrese la placa y la hora de salida");
@@ -600,89 +595,91 @@ public class Home extends javax.swing.JFrame {
                     String timeEnter = rs.getString(2);
                     String timeExit =  rs.getString(3);
                     
-                    System.out.println(veh);
                     
-                    try {
-                        
-                        Date difference = connection.getDifferenceBetweenDates(sdfResult.parse(timeEnter), sdfResult.parse(timeExit));
-                        
-                        String timeResult = sdfResult.format(difference);
-                        
-                        
-                        System.out.println(timeResult);
-                        
-                        String minutes = sdfResultMinutes.format(difference);
-                        
-                        System.out.println(minutes);
-
-                        
-                        int minutesInParking = Integer.parseInt(minutes);
-                        
-                        
-                        if(veh == "Moto") {
-                                                    
+                    
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                    
+                    LocalTime timeEn = LocalTime.parse(timeEnter, formatter);
+                    LocalTime timeEx = LocalTime.parse(timeExit, formatter);
+                    
+                    Duration diff = Duration.between(timeEn, timeEx);
+                    long diffMin = diff.toMinutes();
+                    
+                    int minutesInParking = (int) diffMin;
+                    
+                    
+                    
+                    switch(veh) {
+                        case "Moto":
                             if(minutesInParking <= 30) {
                                 parkingPrice = 500;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+
                             } else if(minutesInParking > 30 && minutesInParking <= 60) {
                                 parkingPrice = 1000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+
                             } else if(minutesInParking > 60  && minutesInParking <= 120) {
                                 parkingPrice = 2000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+
                             } else {
                                 parkingPrice = 3000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
                             }
                             
-                        } else if(veh == "Carro Particular") {
-                            
+                            break;
+                        
+                        case "Carro Particular":
                             if(minutesInParking <= 30) {
                                 parkingPrice = 1000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+                            
                             } else if(minutesInParking > 30 && minutesInParking <= 60) {
                                 parkingPrice = 2000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+
                             } else if(minutesInParking > 60  && minutesInParking <= 120) {
                                 parkingPrice = 3000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+
                             } else {
                                 parkingPrice = 5000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
                             }
                             
-                        } else {
+                            break;
                             
+                        case "Bus": 
                             if(minutesInParking <= 30) {
                                 parkingPrice = 1500;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+                            
                             } else if(minutesInParking > 30 && minutesInParking <= 60) {
                                 parkingPrice = 2500;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+                            
                             } else if(minutesInParking > 60  && minutesInParking <= 120) {
                                 parkingPrice = 4000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
-                                
+                            
                             } else {
                                 parkingPrice = 6000;
                                 priceParkingText.setText("El precio a pagar es: "+ parkingPrice +"$");
                             }
-                        }
-                        
-                        
-                    } catch (ParseException ex) {
-                        Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                        break;
                     }
                     
+                    String query6 = "INSERT into vehiculos(placa, tipoVehiculo, horaEntrada, horaSalida, costoParking) values('"+ plate +"', '"+ veh +"', '"+ timeEnter +"', '"+ timeExit +"', '"+ parkingPrice +"')";
                     
+                    Statement st3 = connection.connect().createStatement();
+                    st3.executeUpdate(query4);
+
+                    Statement st4 = connection.connect().createStatement();
+                    st4.executeUpdate(query5);
+                    
+                    Statement st5 = connection.connect().createStatement();
+                    st5.executeUpdate(query6);
                     
                 }
                 

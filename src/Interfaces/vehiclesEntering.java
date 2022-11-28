@@ -582,7 +582,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         String query4 = "select 1 from vehiculosentrando where placa = ?";
         
 
-            if(plate.isEmpty() || dateT.isEmpty()){
+            if(plate.isEmpty() || dateT.isEmpty() || vehicle.equals("Seleccione una opción")){
 
                 textWarning.setText("Por favor ingrese la placa, tipo de vehículo y hora de entrada");
                 textWarning.setForeground(Color.red);

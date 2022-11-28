@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.time.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -73,7 +74,7 @@ public class connectionDB {
     }
     
     
-    public static Date getDifferenceBetweenDates(Date timeEnter, Date timeExit) {
+    /*public static Date getDifferenceBetweenDates(Date timeEnter, Date timeExit) {
         long milliseconds = timeExit.getTime() - timeEnter.getTime();
         int seconds = (int) (milliseconds / 1000) % 60;
         int minutes = (int) ((milliseconds / (1000 * 60)) % 60);
@@ -84,5 +85,5 @@ public class connectionDB {
         c.set(Calendar.MINUTE, minutes);
         c.set(Calendar.HOUR_OF_DAY, hours);
         return c.getTime();
-    }
+    }*/
 }
