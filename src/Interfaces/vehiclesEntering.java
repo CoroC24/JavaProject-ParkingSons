@@ -58,6 +58,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         textWarning = new javax.swing.JLabel();
         addButton = new javax.swing.JPanel();
         addLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -404,7 +405,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
         textWarning.setFont(new java.awt.Font("agave Nerd Font", 0, 18)); // NOI18N
         textWarning.setForeground(new java.awt.Color(255, 0, 0));
         textWarning.setToolTipText("");
-        backgroundPanel.add(textWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 560, 30));
+        backgroundPanel.add(textWarning, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 560, 30));
 
         addButton.setBackground(new java.awt.Color(46, 125, 50));
         addButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -439,6 +440,11 @@ public class vehiclesEntering extends javax.swing.JFrame {
         );
 
         backgroundPanel.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 232, -1));
+
+        jLabel2.setFont(new java.awt.Font("agave Nerd Font", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Aquí puedes ingresar los vehículos que entran al estacionamiento");
+        backgroundPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 520, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -698,6 +704,7 @@ public class vehiclesEntering extends javax.swing.JFrame {
     private javax.swing.JLabel inputPlateText1;
     public app.bolivia.swing.JCTextField inputPlateVE;
     private javax.swing.JLabel inputVehicleText;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel panelBar;
     private javax.swing.JSeparator separator1;
     private javax.swing.JSeparator separator2;

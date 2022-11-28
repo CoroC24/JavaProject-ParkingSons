@@ -345,18 +345,15 @@ public class vehiclesInParking extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
         backgroundPanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 550, 40));
 
-        jScrollPane1.setFocusable(false);
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(new java.awt.Color(51, 51, 51));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setFont(new java.awt.Font("agave Nerd Font", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
+        jTable1.setForeground(new java.awt.Color(51, 51, 51));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Placa", "Tipo de Vehículo", "Hora de Entrada"
@@ -371,13 +368,11 @@ public class vehiclesInParking extends javax.swing.JFrame {
             }
         });
         jTable1.setFocusable(false);
-        jTable1.setPreferredSize(new java.awt.Dimension(450, 0));
         jTable1.setRowHeight(25);
         jTable1.setSelectionBackground(new java.awt.Color(46, 160, 50));
         jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTable1.setShowGrid(false);
         jTable1.setShowHorizontalLines(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         backgroundPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 820, -1));
